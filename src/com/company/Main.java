@@ -28,6 +28,7 @@ public class Main {
             Trip trip = new Trip(p1,p2,numeros[4],numeros[5],id++);
             map.addViagem(p1,trip);
         }
+        map.solver();
         map.taxi.forEach(Vehicle::printList);
     }
 }
