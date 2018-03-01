@@ -3,6 +3,7 @@ package com.company;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.TreeMap;
 
 public class Mapa{
@@ -23,7 +24,7 @@ public class Mapa{
 		this.rides = ri;
 		this.bonus = b;
 		this.steps = s;
-		viagens = new TreeMap<>();
+		viagens = new HashMap<>();
 		taxi = new ArrayList<>();
 	}
 
@@ -38,8 +39,8 @@ public class Mapa{
 	public Trip bestTrip(Vehicle v){
 		double dist;
 		Point p = v.p;
-                Map.Entry<Point,Vehicle> entry = viagens.entrySet().iterator().next();
-                Point key = entry.getKey();
+		Map.Entry<Point,Trip> entry = viagens.entrySet().iterator().next();
+		Point key = entry.getKey();
 		Trip t = viagens.get(key);
 		dist = key.distance(p);
 		for(Trip t2: viagens.values()){
@@ -56,7 +57,7 @@ public class Mapa{
 	public void makeTrip(Trip t, Vehicle v){
 		v.p = t.end;
 		for(Trip t2: viagens.values()){
-			if(t2 == t) viagens.remove(t2.initial);
+			if(t2.equals() ) viagens.remove(t2.initial);
 		}
 	}
 
