@@ -1,8 +1,8 @@
 package com.company;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class Mapa{
 
@@ -24,6 +24,12 @@ public class Mapa{
 		this.steps = s;
 	}
 
-	
+	public void addViagem(Point ponto ,Trip viagem ){
+		viagens.put(ponto,viagem);
+	}
+
+	public void addTaxi(Vehicle v){
+		taxi.add(v);
+	}
 
 }

@@ -15,6 +15,6 @@ public class Trip{
 		this.end = e;
 		this.earlStart = earlier;
 		this.latFinish = end;
-		int id = id;
+		this.id = id;
 	}
 }
