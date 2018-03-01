@@ -13,7 +13,7 @@ public class Mapa{
 	int rides;
 	int bonus;
 	int steps;
-	TreeMap<Point,Trip> viagens;
+	HashMap<Point,Trip> viagens;
 	ArrayList<Vehicle> taxi;
 
 	public Mapa(int r, int c, int v, int ri, int b, int s){
@@ -38,9 +38,10 @@ public class Mapa{
 	public Trip bestTrip(Vehicle v){
 		double dist;
 		Point p = v.p;
-		Point p2 = viagens.firstKey();
-		Trip t = viagens.get(p2);
-		dist = p2.distance(p);
+                Map.Entry<Point,Vehicle> entry = viagens.entrySet().iterator().next();
+                Point key = entry.getKey();
+		Trip t = viagens.get(key);
+		dist = key.distance(p);
 		for(Trip t2: viagens.values()){
 			Point p3 = t2.initial;
 			double dist2 = p3.distance(p);
