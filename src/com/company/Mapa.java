@@ -22,6 +22,8 @@ public class Mapa{
 		this.rides = ri;
 		this.bonus = b;
 		this.steps = s;
+		viagens = new HashMap<>();
+		taxi = new ArrayList<>();
 	}
 
 	public void addViagem(Point ponto ,Trip viagem ){
