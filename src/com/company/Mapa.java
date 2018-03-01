@@ -10,7 +10,7 @@ import java.util.TreeMap;
 
 public class Mapa{
         
-        Point aux;
+    Point aux;
 	int rows;
 	int columns;
 	int vehicles;
@@ -31,8 +31,16 @@ public class Mapa{
 		taxi = new ArrayList<>();
 	}
 
-	public void addViagem(Point ponto ,Trip viagem ){
-		viagens.put(ponto,viagem);
+	public void addViagem(Point ponto ,Trip viagem){
+	    ArrayList<Trip> t;
+	    if(viagens.containsKey(ponto)){
+            t =viagens.get(ponto);
+        }
+        else{
+            t = new ArrayList<Trip>();
+        }
+        t.add(viagem);
+        viagens.put(ponto,t);
 	}
 
 	public void addTaxi(Vehicle v){
@@ -49,9 +57,10 @@ public class Mapa{
 		for(Point t2: viagens.keySet()){
 			//Point p3 = t2.initial;
 			double dist2 = t2.distance(p);
+			aux = key;
 			if(dist2 < dist){
 				dist = dist2;
-                                t = viagens.get(dist).get(0);
+                                t = viagens.get(t2).get(0);
                                 aux = t2;
 			}
 		}
@@ -60,8 +69,11 @@ public class Mapa{
 
 	public void makeTrip(Trip t, Vehicle v){
 		v.p = t.end;
-                ArrayList x = viagens.get(aux);
+        ArrayList x = viagens.get(aux);
 		x.remove(t);
+	    if(x.size() == 0){
+	        viagens.remove(aux);
+        }
 	}
 
 	public void solver(){
