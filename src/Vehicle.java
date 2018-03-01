@@ -1,10 +1,10 @@
 public class Vehicle{
 
-	int id;
 	Point p;
+	Set<Integer> list;
 
-	public Vehicle(Point p, int id){
+	public Vehicle(Point p){
 		this.p = p;
-		this.id = id;
+		list = new HashSet<>();
 	}
-}
+}	
